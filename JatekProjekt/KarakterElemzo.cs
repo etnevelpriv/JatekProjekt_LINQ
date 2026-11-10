@@ -113,7 +113,7 @@ namespace JatekProjekt
         // Add vissza az összes karaktert szint szerint csökkenő, azon belül pedig név szerint növekvő sorrendbe rendezve!
         public List<Karakter> KarakterekSzintSzerintRendezve()
         {
-            return karakterek.OrderByDescending(karakter=>karakter.Szint).OrderBy(karakter=>karakter.Nev).ToList();
+            return karakterek.OrderByDescending(karakter=>karakter.Szint).ThenBy(karakter=>karakter.Nev).ToList();
         }
 
         // Keresd meg OrderByDescending és FirstOrDefault segítségével annak a karakternek a nevét, akinek a legtöbb aranya van!
