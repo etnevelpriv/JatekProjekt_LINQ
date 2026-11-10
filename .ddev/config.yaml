@@ -14,7 +14,7 @@ composer_version: "2"
 web_environment: []
 nodejs_version: "24"
 corepack_enable: false
-db_host_port: 4200
+host_db_port: 4201
 # Key features of DDEV's config.yaml:
 
 # name: <projectname> # Name of the project, automatically provides
