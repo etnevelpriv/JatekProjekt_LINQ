@@ -84,13 +84,13 @@ namespace JatekProjekt
         // Számítsd ki Average segítségével a karakterek átlagos szintjét double értékként!
         public double AtlagSzint()
         {
-            throw new NotImplementedException();
+            return Convert.ToDouble(karakterek.Average(karakter => karakter.Szint));
         }
 
         // Állapítsd meg Any segítségével, hogy van-e olyan "Tolvaj" osztályú karakter, akinek a szintje eléri vagy meghaladja a 40-et!
         public bool VaneMagasSzintuTolvaj()
         {
-            throw new NotImplementedException();
+            return karakterek.Any(karakter => karakter.Osztaly == "Tolvaj" && karakter.Szint >= 40);
         }
 
         // Ellenőrizd Any segítségével, hogy létezik-e olyan karakter, akinek 10 000 aranynál több van a zsebében!
