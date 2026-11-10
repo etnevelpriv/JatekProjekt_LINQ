@@ -131,13 +131,13 @@ namespace JatekProjekt
         // Keresd meg Max segítségével a legmagasabb szintű karakter szintjét!
         public int LegmagasabbSzint()
         {
-            throw new NotImplementedException();
+            return karakterek.Max(karakter => karakter.Szint);
         }
 
         // Rendezd a karaktereket a nevük hossza szerint növekvő sorrendbe!
         public List<Karakter> KarakterekNevHosszaSzerint()
         {
-            throw new NotImplementedException();
+            return karakterek.OrderBy(karakter=>karakter.Nev.Length).ToList();
         }
 
 
@@ -148,31 +148,31 @@ namespace JatekProjekt
         // Csoportosítsd a karaktereket az Osztaly tulajdonságuk alapján, és alakítsd át ToDictionary-vel úgy, hogy a kulcs az osztály neve, az érték pedig a karakterek darabszáma legyen!
         public Dictionary<string, int> OsztalyonkentKarakterSzam()
         {
-            throw new NotImplementedException();
+            return karakterek.GroupBy(karakter=>karakter.Osztaly).ToDictionary(csoport=>csoport.Key, csoport=>csoport.Count());
         }
 
         // Csoportosítsd a karaktereket a Szerver tulajdonságuk alapján, és számold meg, hány karakter játszik az egyes szervereken!
         public Dictionary<string, int> SzerverenKarakterekSzama()
         {
-            throw new NotImplementedException();
+            return karakterek.GroupBy(karakter=>karakter.Szerver).ToDictionary(csoport=>csoport.Key, csoport=>csoport.Count());
         }
 
         // Gyűjtsd ki az összes "Harcos" osztályú karakter azonosítóját (Id) egy listába!
         public List<int> HarcosokAzonositoi()
         {
-            throw new NotImplementedException();
+            return karakterek.Where(karakter=>karakter.Osztaly=="Harcos").Select(karakter=>karakter.Id).ToList();
         }
 
         // Állapítsd meg, hogy van-e olyan 50-es szintnél magasabb Mágus, akinek 3000-nél kevesebb aranya van!
         public bool VanETolvajSpecKondicioval()
         {
-            throw new NotImplementedException();
+            return karakterek.Any(karakter=>karakter.Szint > 50 && karakter.Osztaly == "Mágus" == karakter.Arany < 3000);
         }
 
         // Keresd meg és add vissza a legmagasabb szintű karakter objektumát!
         public Karakter LegmagasabbSzintuKarakterObjektum()
         {
-            throw new NotImplementedException();
+            return karakterek.OrderByDescending(karakter=>karakter.Szint).FirstOrDefault();
         }
 
     }
