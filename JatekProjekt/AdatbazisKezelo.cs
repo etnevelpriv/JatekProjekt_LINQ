@@ -12,7 +12,7 @@ namespace JatekProjekt
 
         private static void AdatbazisKezeloFunction()
         {
-            string connectionString = "server=127.0.0.1;port=4201;db=JatekDb;uid=root;pwd=root";// Irjuk meg a connectionstringet a megfelelő adatbázisra hivatkozva
+            string connectionString = "server=127.0.0.1;port=4201;database=JatekDb;uid=root;pwd=root";// Irjuk meg a connectionstringet a megfelelő adatbázisra hivatkozva
             using(MySqlConnection connection = new(connectionString))
             {
                 string query = "SELECT * FROM Karakterek";

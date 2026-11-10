@@ -19,7 +19,19 @@ namespace JatekProjekt
 
         public List<string> MagasSzintuKarakterek()
         {
-            throw new NotImplementedException();
+            var eredmenyek = karakterek
+                .Where(karakter => karakter.Szint > 70)
+                .Select(karakter => new
+                {
+                    Nev=karakter.Nev
+                });
+            List<string> nevek = new();
+            foreach (var adat in eredmenyek)
+            {
+                nevek.Add(adat.Nev);
+                Console.WriteLine(adat.Nev);
+            }
+            return nevek;
         }
 
         // Gyűjtsd ki az összes "Mágus" osztályú karakter nevét!
