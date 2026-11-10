@@ -96,13 +96,13 @@ namespace JatekProjekt
         // Ellenőrizd Any segítségével, hogy létezik-e olyan karakter, akinek 10 000 aranynál több van a zsebében!
         public bool VanETizEzerAranynalTobb()
         {
-            throw new NotImplementedException();
+            return karakterek.Any(karakter => karakter.Arany > 10000);
         }
 
         // Keresd meg FirstOrDefault segítségével az első olyan karaktert, akinek az aranya meghaladja az 5000-et!
         public Karakter LegelsoOvenKarakter()
         {
-            throw new NotImplementedException();
+            return karakterek.FirstOrDefault(karakter=>karakter.Arany > 5000);
         }
 
 
@@ -113,19 +113,19 @@ namespace JatekProjekt
         // Add vissza az összes karaktert szint szerint csökkenő, azon belül pedig név szerint növekvő sorrendbe rendezve!
         public List<Karakter> KarakterekSzintSzerintRendezve()
         {
-            throw new NotImplementedException();
+            return karakterek.OrderByDescending(karakter=>karakter.Szint).OrderBy(karakter=>karakter.Nev).ToList();
         }
 
         // Keresd meg OrderByDescending és FirstOrDefault segítségével annak a karakternek a nevét, akinek a legtöbb aranya van!
         public string LeggazdagabbKarakterNeve()
         {
-            throw new NotImplementedException();
+            return karakterek.OrderByDescending(karakter => karakter.Arany).FirstOrDefault().Nev;
         }
 
         // Keresd meg OrderBy és FirstOrDefault segítségével a legszegényebb (legkevesebb aranyú) karakter nevét!
         public string LegszegenyebbKarakterNeve()
         {
-            throw new NotImplementedException();
+            return karakterek.OrderBy(karakter => karakter.Arany).FirstOrDefault().Nev;
         }
 
         // Keresd meg Max segítségével a legmagasabb szintű karakter szintjét!
