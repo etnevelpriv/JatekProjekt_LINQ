@@ -8,22 +8,39 @@ namespace JatekProjekt
 
     public class AdatbazisKezelo
     {
-        private readonly string connectionString;
+        private static List<Karakter> karakterek = new List<Karakter>();
 
-
-        public AdatbazisKezelo()
+        private static void AdatbazisKezeloFunction()
         {
-
-            this.connectionString = "";// Irjuk meg a connectionstringet a megfelelő adatbázisra hivatkozva
+            string connectionString = "server=127.0.0.1;port=4201;db=JatekDb;uid=root;pwd=root";// Irjuk meg a connectionstringet a megfelelő adatbázisra hivatkozva
+            using(MySqlConnection connection = new(connectionString))
+            {
+                string query = "SELECT * FROM Karakterek";
+                using(MySqlCommand command = new(query, connection))
+                {
+                    connection.Open();
+                    using(MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Karakter karakter = new(
+                                Convert.ToInt32(reader[0]),
+                                reader[1].ToString(),
+                                reader[2].ToString(),
+                                Convert.ToInt32(reader[3]),
+                                Convert.ToInt32(reader[4]),
+                                reader[5].ToString()
+                            );
+                            karakterek.Add(karakter);
+                        }
+                    }
+                }
+            }
         }
-
-   
         /// Beolvassa az összes karaktert az adatbázisból egy List<Karakter>-be.
-       
         public List<Karakter> AdatokBetoltese()
         {
-            var karakterek = new List<Karakter>();
-            
+            AdatbazisKezeloFunction();
             return karakterek;
         }
     }
