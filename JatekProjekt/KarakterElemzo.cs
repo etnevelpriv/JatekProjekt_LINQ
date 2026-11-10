@@ -23,7 +23,7 @@ namespace JatekProjekt
                 .Where(karakter => karakter.Szint > 70)
                 .Select(karakter => new
                 {
-                    Nev=karakter.Nev
+                    Nev = karakter.Nev
                 });
             List<string> nevek = new();
             foreach (var adat in eredmenyek)
@@ -37,25 +37,37 @@ namespace JatekProjekt
         // Gyűjtsd ki az összes "Mágus" osztályú karakter nevét!
         public List<string> MagusOsztalyuNevek()
         {
-            throw new NotImplementedException();
+            var eredmenyek = karakterek
+                .Where(karakter => karakter.Osztaly == "Mágus")
+                .Select(karakter => new
+                {
+                    Nev = karakter.Nev
+                });
+            List<string> nevek = new();
+            foreach (var adat in eredmenyek)
+            {
+                Console.WriteLine(adat.Nev);
+                nevek.Add(adat.Nev);
+            }
+            return nevek;
         }
 
         // Add vissza az összes karakter nevét egy egyszerű listában!
         public List<string> OsszesKarakterNevListaba()
         {
-            throw new NotImplementedException();
+            return karakterek.Select(karakter=>karakter.Nev).ToList();
         }
 
         // Szűrd ki azokat a karaktereket, amelyek valamelyik "EU-"-val kezdődő szerveren játszanak, és add vissza a nevüket listában!
         public List<string> EuSzerveresKarakterek()
         {
-            throw new NotImplementedException();
+            return karakterek.Where(karakter => karakter.Szerver.StartsWith("EU")).Select(karakter => karakter.Nev).ToList();
         }
 
         // Válaszd ki az összes egyedi (különböző) szervernevet, ahol a karakterek játszanak (Distinct segítségével)!
         public List<string> EgyediSzerverNevek()
         {
-            throw new NotImplementedException();
+            return karakterek.Select(karakter=> karakter.Szerver).Distinct().ToList();
         }
 
 
@@ -66,7 +78,7 @@ namespace JatekProjekt
         // Számold meg Sum segítségével, hogy mennyi a karakterek összes aranya a szerveren!
         public int OsszesAranyMennyiseg()
         {
-            throw new NotImplementedException();
+            return karakterek.Sum(karakter => karakter.Arany);
         }
 
         // Számítsd ki Average segítségével a karakterek átlagos szintjét double értékként!

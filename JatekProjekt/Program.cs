@@ -5,7 +5,8 @@
         static void Main(string[] args)
         {
          KarakterElemzo karakterElemzo = new();
-         karakterElemzo.MagasSzintuKarakterek();
+         // karakterElemzo.MagasSzintuKarakterek();
+         karakterElemzo.MagusOsztalyuNevek();
         }
     }
 }
